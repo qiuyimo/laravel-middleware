@@ -11,6 +11,16 @@
 |
 */
 
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
 Route::get('/', function () {
     return view('welcome');
+})->middleware('token');
+
+Route::group(['middleware' => ['blog']], function () {
+    Route::get('/token', function () {
+        return view('welcome');
+    });
 });
